@@ -58,7 +58,7 @@ router.get("/", verify, async (req, res) => {
     if (req.user.isAdmin) {
         try {
             // fetch latest 10 users, localhost:8800/api/users?new=true
-            const users = query ? await User.find().sort({ _id: -1 }).limit(10) : await User.find(); 
+            const users = query ? await User.find().sort({ _id: -1 }).limit(5) : await User.find(); 
             res.status(200).json(users);    
         } catch (err) {
             res.status(500).json(err);
@@ -73,26 +73,11 @@ router.get("/stats", async (req, res) => {
     const today = new Date();
     const lastYear = today.setFullYear(today.setFullYear() - 1);
 
-    const monthsArray = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-    ];
-
     try {
         const data = await User.aggregate([
             {
                 $project: {
-                    month: { $month: "$createdAt" }
+                    month: { $month: "$createdAt" },
                 },
             },
             {
@@ -102,11 +87,12 @@ router.get("/stats", async (req, res) => {
                 },
             },
         ]);
+        
         res.status(200).json(data);
         
     } catch (error) {
         res.status(500).json(error);
     }
-})
+});
 
 module.exports = router;

@@ -12,6 +12,7 @@ import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutline
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import { Link } from "react-router-dom";
+import SlideshowIcon from '@mui/icons-material/Slideshow';
 
 export default function sidebar() {
   return (
@@ -46,10 +47,10 @@ export default function sidebar() {
                             Users
                         </li>
                     </Link>
-                    <Link to="/products" className="link"> 
+                    <Link to="/movies" className="link"> 
                         <li className="sidebarListItem">
-                            <StorefrontOutlinedIcon className="sidebarIcon"/>
-                            Products
+                            <SlideshowIcon className="sidebarIcon"/>
+                            Movies
                         </li>
                     </Link>
                     <li className="sidebarListItem">
