@@ -24,6 +24,7 @@ export default function WidgetSmall() {
 
         getNewUsers();
     }, [])
+    
   return (
     <div className="widgetSmall">
         <span className="widgetSmallTitle"> New Users</span>
