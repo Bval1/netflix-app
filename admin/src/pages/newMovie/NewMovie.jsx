@@ -1,9 +1,10 @@
 import { useContext, useState } from "react"
 import storage from "../../firebase"
 import "./newMovie.css"
-import { getStorage, ref, uploadBytes, uploadBytesResumable, getDownloadURL  } from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL  } from "firebase/storage";
 import { createMovie } from "../../context/movieContext/apiCalls";
 import {MovieContext} from "../../context/movieContext/MovieContext"
+import { useNavigate } from "react-router-dom";
 
 
 export default function NewMovie() {
@@ -15,6 +16,7 @@ export default function NewMovie() {
     const [uploaded, setUploaded] = useState(0);
     
     const {dispatch} = useContext(MovieContext)
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -57,11 +59,13 @@ export default function NewMovie() {
         ]);
     };
 
-    console.log(movie);
+    //console.log(movie);
 
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         createMovie(movie, dispatch);
+        navigate("/movies");
     }
 
   return (

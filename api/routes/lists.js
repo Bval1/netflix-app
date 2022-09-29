@@ -22,11 +22,9 @@ router.post("/", verify, async (req, res) => {
 // DELETE
 router.delete("/:id", verify, async (req, res) => {
     if(req.user.isAdmin) {
-        await List.findByIdAndDelete(req.params.id);
-        res.status(201).json("List has been deleted");
        try {
-            const savedList = await newList.save();
-            res.status(201).json(savedList);
+            await List.findByIdAndDelete(req.params.id);
+            res.status(201).json("List has been deleted");
        } catch (error) {
             res.status(500).json(error);
        }

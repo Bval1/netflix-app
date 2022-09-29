@@ -11,6 +11,7 @@ import GradingOutlinedIcon from '@mui/icons-material/GradingOutlined';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
+import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
 import { Link } from "react-router-dom";
 import SlideshowIcon from '@mui/icons-material/Slideshow';
 
@@ -53,10 +54,12 @@ export default function sidebar() {
                             Movies
                         </li>
                     </Link>
-                    <li className="sidebarListItem">
-                        <AttachMoneyOutlinedIcon className="sidebarIcon"/>
-                        Transactions
-                    </li>
+                        <Link to="/lists" className="link"> 
+                        <li className="sidebarListItem">
+                            <FormatListBulletedOutlinedIcon className="sidebarIcon"/>
+                            Lists
+                        </li>
+                    </Link>
                     <li className="sidebarListItem">
                         <BarChartIcon className="sidebarIcon"/>
                         Reports
