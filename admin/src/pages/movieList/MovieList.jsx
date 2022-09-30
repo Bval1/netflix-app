@@ -41,7 +41,7 @@ export default function MovieList() {
                 return (
                     <>  
                         <Link 
-                        to={{pathname:"/product/" + params.row._id}} 
+                        to={{pathname:"/movie/" + params.row._id}} 
                         state={{movie: params.row}}
                         >
                             <button className="userListEdit">Edit</button>
@@ -68,6 +68,12 @@ export default function MovieList() {
         checkboxSelection
         getRowId={(r) => r._id}
         />
+        <div className="createButton">
+            <Link to="/newMovie">
+            <button>Create</button>
+            </Link>
+        </div>
     </div>
+
   )
 }

@@ -53,10 +53,10 @@ const Featured = ({type}) => {
         alt="" 
         />
         <div className="info">
-            <img 
+            {/* <img 
             src={content.imgTitle}
             alt=""  
-            />
+            /> */}
             <span className="desc">
                 {content.desc}
             </span>

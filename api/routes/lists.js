@@ -5,10 +5,9 @@ const { route } = require("./users");
 
 // CREATE
 router.post("/", verify, async (req, res) => {
-    if(req.user.isAdmin) {
-       const newList = new List(req.body);
-
-       try {
+    if(req.user.isAdmin) { 
+        try {
+            const newList = new List(req.body);
             const savedList = await newList.save();
             res.status(201).json(savedList);
        } catch (error) {

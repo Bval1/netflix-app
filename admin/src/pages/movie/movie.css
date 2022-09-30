@@ -107,6 +107,24 @@
     margin-bottom: 10px;
 }
 
+.productFormRight {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.productUpload {
+    position: relative;
+    text-align: center;
+ 
+}
+
+.productUpload>label {
+    
+    margin-bottom: 10px;
+    color: darkslategray;
+}
+
 .productUploadImg {
     width: 100px;
     height: 100px;
@@ -115,16 +133,6 @@
     margin-right: 20px;
 }
 
-.productFormRight {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.productUpload {
-    display: flex;
-    align-items: center;
-}
 
 .productButton {
     border: none;
@@ -133,5 +141,10 @@
     background-color: navy;
     color: white;
     font-weight: 600;
+    cursor: pointer;
+}
+
+.movieUpdateIcon {
+    margin-right: 20px;
     cursor: pointer;
 }

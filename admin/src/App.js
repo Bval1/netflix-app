@@ -45,8 +45,8 @@ function App() {
               <Route path="/newUser"  element={<NewUser />} />
 
               <Route path="/movies"  element={<MovieList />} />
-              <Route path="/product/:productId"  element={<Movie />} />
-              <Route path="/newProduct"  element={<NewMovie />} />
+              <Route path="/movie/:movieId"  element={<Movie />} />
+              <Route path="/newMovie"  element={<NewMovie />} />
 
               <Route path="/lists"  element={<ListList />} />
               <Route path="/list/:listId"  element={<List />} />

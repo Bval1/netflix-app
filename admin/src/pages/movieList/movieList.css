@@ -29,3 +29,8 @@
     color: rgb(218, 0, 0);
     cursor: pointer;
 }
+
+.createButton {
+    display: flex;
+    padding: 20px;
+}
