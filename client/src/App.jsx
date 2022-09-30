@@ -9,12 +9,13 @@ import {
   Routes,
   Route,
   Navigate,
-  Link,
 } from "react-router-dom";
+import { useContext } from "react";
+import {AuthContext} from "./context/authContext/AuthContext"
 
 
 const App = () => {
-  const user = true;
+  const {user} = useContext(AuthContext);
 
   return (
     <BrowserRouter>
@@ -25,7 +26,7 @@ const App = () => {
         
         { user && (
           <>
-            <Route path="/movies"  element={<Home type="movies" />} />
+            <Route path="/movies"  element={<Home type="movie" />} />
             <Route path="/series"  element={<Home type="series" />} />
             <Route path="/watch"  element={<Watch />} />
           </>

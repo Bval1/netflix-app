@@ -5,7 +5,7 @@ import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 import storage from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL  } from "firebase/storage";
 import { updateMovie } from "../../context/movieContext/apiCalls";
-import {MovieContext} from "../../context/movieContext/MovieContext"
+import { MovieContext } from "../../context/movieContext/MovieContext"
 
 
 export default function Movie() {
