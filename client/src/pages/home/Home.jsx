@@ -2,24 +2,24 @@ import "./home.scss"
 import Navbar from "../../components/navbar/Navbar"
 import Featured from "../../components/featured/Featured"
 import List from "../../components/list/List"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import axios from "axios"
 
 
 const Home = ({type}) => {
   const [lists, setLists] = useState([]);
   const [genre, setGenre] = useState(null);
+
   useEffect(() => {
     const getRandomLists = async () => {
       
       try {
         const res = await axios.get(
-          `lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""}`, 
-            {
-              headers:{
-                token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMmUxZTE5ZTAxMDhhNTY4MDZmZGM2MSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2NDIyNzQ1NCwiZXhwIjoxNjY0NjU5NDU0fQ.g144XYq_LL4U1t02i8vD65LTl_PGVGWvnoADT5x3V9A"
-              }
+          `lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""}`, {
+            headers: {
+                token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
             }
+        }
           ); 
           setLists(res.data); 
       } catch(err) {

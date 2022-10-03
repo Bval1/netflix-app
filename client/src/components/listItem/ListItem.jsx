@@ -18,7 +18,7 @@ function ListItem({index, item}) {
         const res = await axios.get("/movies/find/" + item, 
           {
             headers:{
-              token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMmUxZTE5ZTAxMDhhNTY4MDZmZGM2MSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2NDIyNzQ1NCwiZXhwIjoxNjY0NjU5NDU0fQ.g144XYq_LL4U1t02i8vD65LTl_PGVGWvnoADT5x3V9A"
+              token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
             },
           });
           setMovie(res.data);
