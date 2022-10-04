@@ -5,16 +5,19 @@ import List from "../../components/list/List"
 import { useEffect, useState, useContext } from "react"
 import axios from "axios"
 
+const axiosInstance = axios.create({
+  baseURL:process.env.REACT_APP_API_URL,
+});
 
 const Home = ({type}) => {
   const [lists, setLists] = useState([]);
   const [genre, setGenre] = useState(null);
-
+  
   useEffect(() => {
     const getRandomLists = async () => {
       
       try {
-        const res = await axios.get(
+        const res = await axiosInstance.get(
           `lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""}`, {
             headers: {
                 token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken

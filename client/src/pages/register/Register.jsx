@@ -4,7 +4,12 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
 
+const axiosInstance = axios.create({
+    baseURL:process.env.REACT_APP_API_URL,
+  });
+  
 function Register() {
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
@@ -23,7 +28,7 @@ function Register() {
         setUsername(usernameRef.current.value);
         setPassword(passwordRef.current.value);
         try {
-            await axios.post("auth/register", {email, username, password});
+            await axiosInstance.post("auth/register", {email, username, password});
             navigate("/login");            
         } catch (error) {
             console.log(error)

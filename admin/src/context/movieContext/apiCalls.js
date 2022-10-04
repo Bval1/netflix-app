@@ -3,11 +3,16 @@ import { createMovieFailure, createMovieStart, createMovieSuccess,
     getMoviesStart, getMoviesSuccess, updateMovieFailure, updateMovieStart, updateMovieSuccess } from "./MovieActions"
 import axios from "axios"
 
+const axiosInstance = axios.create({
+    baseURL:process.env.REACT_APP_API_URL,
+  });
+
+
 // get
 export const getMovies = async (dispatch) =>{
     dispatch(getMoviesStart());
     try {
-        const res = await axios.get("/movies", {
+        const res = await axiosInstance.get("/movies", {
             headers: {
                 token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
             }
@@ -22,7 +27,7 @@ export const getMovies = async (dispatch) =>{
 export const createMovie = async (movie, dispatch) =>{
     dispatch(createMovieStart());
     try {   
-        const res = await axios.post("/movies/", movie, {
+        const res = await axiosInstance.post("/movies/", movie, {
             headers: {
                 token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
             },
@@ -38,7 +43,7 @@ export const createMovie = async (movie, dispatch) =>{
 export const updateMovie = async (movie, info, dispatch) =>{
     dispatch(updateMovieStart());
     try {   
-        const res = await axios.put("/movies/" + movie._id, info, {
+        const res = await axiosInstance.put("/movies/" + movie._id, info, {
             headers: {
                 token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
             },
@@ -54,7 +59,7 @@ export const updateMovie = async (movie, info, dispatch) =>{
 export const deleteMovie = async (id, dispatch) =>{
     dispatch(deleteMovieStart());
     try {   // don't need a response since we're just deleting
-        await axios.delete("/movies/" + id, {
+        await axiosInstance.delete("/movies/" + id, {
             headers: {
                 token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
             }

@@ -7,8 +7,11 @@ import WidgetSmall from "../../components/widgetSmall/WidgetSmall"
 import { userData } from "../../dummyData"
 import "./home.css"
 
-export default function Home() {
+const axiosInstance = axios.create({
+  baseURL:process.env.REACT_APP_API_URL,
+});
 
+export default function Home() {
   // memo hook to signify to react that this array wont change
   const MONTHS = useMemo(() => [
     "Jan",
@@ -31,7 +34,7 @@ export default function Home() {
   useEffect(() => {
       const getStats = async () => {
         try {
-          const res = await axios.get("/users/stats", {
+          const res = await axiosInstance.get("/users/stats", {
             headers: {
             token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMmUxZTE5ZTAxMDhhNTY4MDZmZGM2MSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2NDIyNzQ1NCwiZXhwIjoxNjY0NjU5NDU0fQ.g144XYq_LL4U1t02i8vD65LTl_PGVGWvnoADT5x3V9A"
           },
